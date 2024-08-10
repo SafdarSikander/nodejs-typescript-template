@@ -1,10 +1,9 @@
-/**
- * The following lines intialize dotenv,
- * so that env vars from the .env file are present in process.env
- */
-import * as dotenv from 'dotenv';
-dotenv.config();
+import express from 'express';
+import Hello from './Hello';
+const app = express();
 
-export const sum = (a: number, b: number): number => {
-  return a + b;
-};
+app.get('/', function (req, res) {
+  res.send(new Hello().getText());
+});
+
+app.listen(3000);
